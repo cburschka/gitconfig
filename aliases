@@ -1,0 +1,63 @@
+[alias]
+        # Shortcuts for common branches.
+        co = checkout
+        cod = checkout develop
+        com = checkout master
+        cot = checkout testing
+
+        # Stash shortcuts.
+        stap = stash pop
+        stad = stash drop
+        stas = stash show -p
+        stac = stash clear
+        stal = stash list
+
+        # Shortcut for printing the current branch.
+        current-branch = rev-parse --abbrev-ref HEAD
+
+        # Create an origin remote.
+        register = remote add origin
+
+        # Log commands: log, log+stat, log+stat+diff, one-line log, graph view.
+        l = log -n 1
+        ls = log -n 1 --stat
+        lsd = "!COMMIT=$1;shift 1;git ls $COMMIT --full-diff -p ."
+        lo = log --oneline
+        lg = log --graph --decorate --oneline
+        # Log relative to upstream.
+        ulog = log @{upstream}..
+        logu = log ..@{upstream}
+        ulo = log @{upstream}.. --oneline
+        lou = log ..@{upstream} --oneline
+        new = whatchanged ..@{upstream}
+
+        # Force a command into `less` mode (clear on exit).
+        x = "!env LESS=R git"
+
+        # Diff and annotation commands.
+        merlin = annotate --reverse
+        staged = diff --staged
+        split = checkout -b
+        whois = "!sh -c 'git log -i -i --pretty=\"format:%an <%ae>\" --author=\"$1\"' -"
+        review = "!sh -c 'git log --all --oneline --reverse --date=local --since=\"$1\"'"
+
+        # History-altering commands.
+        recommit = commit --amend --no-edit
+        reword = commit --amend
+        rbi = rebase -i @{upstream}
+
+        # Push commands.
+        publish = push -u origin HEAD
+        unpublish = "!git push origin :${1:-`git current-branch`}; echo >/dev/null"
+
+        # Download and apply a patch.
+        upatch = "!curl $1 | git apply;echo"
+
+        # Set file modification timestamps to last commit (for cloning mtime-sensitive repos).
+        redate = "!DATE=`git lo -1 --format=%ad --date=format:%Y%m%d%H%M.%S -- $1`;touch -t \"$DATE\" \"$1\""
+
+        # Track untracked files inside a directory.
+        adi = add --intent-to-add
+
+        # Run ghi (https://github.com/stephencelis/ghi)
+        issue = "!ghi"
