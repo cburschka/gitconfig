@@ -15,8 +15,10 @@
         # Shortcut for printing the current branch.
         current-branch = rev-parse --abbrev-ref HEAD
 
-        # Create an origin remote.
+        # Connect to an "origin" remote.
         register = remote add origin
+        # Actually create the remote, connect and push.
+        # (The remote must be a local path for this to work.)
         create = init --bare
         setup = "!f() { git create $1 && git register $1 && git publish; }; f"
 
