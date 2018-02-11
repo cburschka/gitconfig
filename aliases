@@ -23,7 +23,7 @@
         # Log commands: log, log+stat, log+stat+diff, one-line log, graph view.
         l = log -n 1
         ls = log -n 1 --stat
-        lsd = "!COMMIT=$1;shift 1;git ls $COMMIT --full-diff -p ."
+        lsd = logstatdiff
         lo = log --oneline
         lg = log --graph --decorate --oneline
         # Log relative to upstream.
