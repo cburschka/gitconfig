@@ -17,6 +17,8 @@
 
         # Create an origin remote.
         register = remote add origin
+        create = init --bare
+        setup = "!f() { git create $1 && git register $1 && git publish; }; f"
 
         # Log commands: log, log+stat, log+stat+diff, one-line log, graph view.
         l = log -n 1
