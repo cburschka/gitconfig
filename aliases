@@ -1,6 +1,8 @@
 [alias]
         # Shortcuts for common branches.
         co = checkout
+        cob = checkout -b
+        cor = checkout @{-1}
         cod = checkout develop
         com = checkout master
         cot = checkout testing
