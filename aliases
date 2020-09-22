@@ -65,3 +65,6 @@
 
         # Run ghi (https://github.com/stephencelis/ghi)
         issue = "!ghi"
+
+        # Switch branch while preserving tree.
+        mb = "!git checkout --detach;git reset --soft $1;git checkout $1"
