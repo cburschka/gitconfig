@@ -48,7 +48,18 @@
         # History-altering commands.
         recommit = commit --amend --no-edit
         reword = commit --amend
+        uncommit = reset HEAD~
         rbi = rebase -i @{upstream}
+        rbc = rebase --continue
+        rba = rebase --abort
+        mc = merge --continue
+        ma = merge --abort
+
+        # Bisection
+        bn = bisect new
+        bo = bisect old
+        bi = bisect start
+        br = bisect reset
 
         # Push commands.
         publish = push -u origin HEAD
